@@ -1,7 +1,7 @@
 var pos = 0;
 const pacArray = [
-  ['./PacMan1.png', './PacMan2.png'],
-  ['./PacMan3.png', './PacMan4.png'],
+  ["images/PacMan1.png", "images/PacMan2.png"],
+  ["images/PacMan3.png", "images/PacMan4.png"],
 ];
 const pacMen = []; // This array holds all the pacmen
 
@@ -21,10 +21,10 @@ function makePac() {
   let position = setToRandom(200);
 
   // Add image to div id = game
-  let game = document.getElementById('game');
-  let newimg = document.createElement('img');
-  newimg.style.position = 'absolute';
-  newimg.src = './PacMan1.png';
+  let game = document.getElementById("game");
+  let newimg = document.createElement("img");
+  newimg.style.position = "absolute";
+  newimg.src = "./PacMan1.png";
   newimg.width = 100;
 
   // TODO: set position here
@@ -57,17 +57,20 @@ function update() {
 
 function checkCollisions(item) {
   if (
-    (item.position.x + item.velocity.x + item.newimg.width > window.innerWidth) || 
-  (item.position.x + item.velocity.x < 0)
-  ) item.velocity.x *= -1;
+    item.position.x + item.velocity.x + item.newimg.width > window.innerWidth ||
+    item.position.x + item.velocity.x < 0
+  )
+    item.velocity.x *= -1;
   if (
-    (item.position.y + item.velocity.y + item.newimg.height > window.innerHeight) || 
-    (item.position.y + item.velocity.y < 0)
-    ) item.velocity.y *= -1;
+    item.position.y + item.velocity.y + item.newimg.height >
+      window.innerHeight ||
+    item.position.y + item.velocity.y < 0
+  )
+    item.velocity.y *= -1;
 }
 
 function makeOne() {
   pacMen.push(makePac()); // add a new PacMan
 }
 //don't change this line
-  module.exports = { checkCollisions, update, pacMen };
+module.exports = { checkCollisions, update, pacMen };
